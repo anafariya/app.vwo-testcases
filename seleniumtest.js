@@ -1,19 +1,12 @@
 const { Builder, By, Key, until } = require('selenium-webdriver');
 
-// Define the URL of the login page
-const loginPageURL = 'https://app.vwo.com/login'; // Replace with the actual URL
-
-// Define test credentials
-const username = 'yourUsername';
-const password = 'yourPassword';
-
 (async function () {
   // Create a new WebDriver instance (using Chrome in this example)
   const driver = await new Builder().forBrowser('chrome').build();
 
   try {
     // Navigate to the login page
-    await driver.get(loginPageURL);
+    await driver.get('https://app.vwo.com/login');
 
     // Find the username and password input fields and the login button
     const usernameField = await driver.findElement(By.id('username')); // Replace with the actual element locator
@@ -21,8 +14,8 @@ const password = 'yourPassword';
     const loginButton = await driver.findElement(By.id('login-button')); // Replace with the actual element locator
 
     // Enter the username and password
-    await usernameField.sendKeys(username);
-    await passwordField.sendKeys(password);
+    await usernameField.sendKeys('yourUsername'); // Replace with a valid username
+    await passwordField.sendKeys('yourPassword'); // Replace with a valid password
 
     // Click the login button
     await loginButton.click();
